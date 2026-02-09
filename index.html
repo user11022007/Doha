@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#f3b7c7" />
+
+  <title>My Dottie 💖</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+
+  <style>
+    :root {
+      --pink: #f3b7c7;
+      --rose: #f7c6d6;
+      --lavender: #e9ddff;
+      --glass: rgba(255, 255, 255, 0.45);
+      --border: rgba(255, 255, 255, 0.35);
+      --ink: #4b2f36;
+      --shadow: rgba(243, 183, 199, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, var(--rose), var(--lavender));
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .screen {
+      display: none;
+      min-height: 100vh;
+      padding: 26px;
+      animation: fadeIn 0.9s ease;
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 9vw, 3.6rem);
+      text-align: center;
+      margin-bottom: 22px;
+      text-shadow: 2px 6px 18px var(--shadow);
+    }
+
+    p {
+      font-size: 1.18rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .btn {
+      margin-top: 32px;
+      padding: 16px 38px;
+      font-size: 1.15rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--pink), var(--lavender));
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 14px 35px var(--shadow);
+    }
+
+    .btn:active { transform: scale(0.97); }
+
+    /* Glass card */
+    .glass {
+      width: 100%;
+      max-width: 620px;
+      background: var(--glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      padding: 30px;
+      margin: 18px auto;
+      box-shadow: 0 20px 50px var(--shadow);
+    }
+
+    /* Scratch */
+    .scratch-wrap {
+      position: relative;
+      height: 280px;
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    #scratch {
+      position: absolute;
+      inset: 0;
+      touch-action: none;
+    }
+
+    .scratch-text {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #fff7f2, var(--rose));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      text-align: center;
+      font-size: 1.28rem;
+    }
+
+    /* Moments */
+    .moments {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .moment {
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 20px;
+      min-height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      font-size: 1.02rem;
+    }
+
+    .moment.revealed {
+      background: linear-gradient(135deg, var(--pink), var(--lavender));
+      color: white;
+      animation: fadeIn 0.6s ease;
+    }
+
+    /* Final */
+    .final {
+      animation: fadeOut 4.5s ease forwards;
+      animation-delay: 2.2s;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LANDING -->
+<div class="screen active" id="landing">
+  <h1>Happy Birthday,<br>My Dottie 🎂</h1>
+  <p>
+    You’re not just someone I love.<br>
+    You’re the future I keep choosing.<br>
+    2ajilan 🤍
+  </p>
+  <button class="btn" onclick="go('main')">Open this slowly ☕️</button>
+</div>
+
+<!-- MAIN -->
+<div class="screen" id="main">
+
+  <div class="glass">
+    <h2 style="text-align:center; margin-bottom:14px;">Scratch this 🤍</h2>
+    <div class="scratch-wrap">
+      <canvas id="scratch"></canvas>
+      <div class="scratch-text">
+        My Dottie,<br><br>
+        I don’t love you quietly.<br>
+        I love you with intention, obsession, and certainty.<br>
+        Every plan in my head somehow includes you — 2ajilan.<br><br>
+        ewa yaaaalah ☕️
+      </div>
+    </div>
+  </div>
+
+  <div class="glass">
+    <h2 style="text-align:center; margin-bottom:16px;">Read these carefully ✨</h2>
+    <div class="moments" id="moments"></div>
+  </div>
+
+  <div class="glass" style="text-align:center;">
+    <button class="btn" onclick="go('end')">One last thing 🌙</button>
+  </div>
+
+</div>
+
+<!-- FINAL -->
+<div class="screen final" id="end">
+  <h1>See you soon,<br>My Dottie 🤍</h1>
+  <p>
+    This isn’t longing.<br>
+    This is anticipation.<br>
+    2ajilan.
+  </p>
+</div>
+
+<script>
+/* CARDS — PASSIONATE, PLAYFUL, NOT ABSTRACT */
+const MOMENTS = [
+  "I’m deeply, irrationally into you — and I don’t want it any other way.",
+  "You make the future feel exciting instead of scary.",
+  "I feel safe with you in ways I didn’t know I needed.",
+  "I admire you more than I say — and I think about you more than I should.",
+  "I’m choosing you on purpose. Every version of tomorrow. 2ajilan.",
+  "You’re mine, I’m yours — ewa yaaaalah ☕️"
+];
+
+function go(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (id === 'main') initScratch();
+}
+
+function initScratch() {
+  const canvas = document.getElementById('scratch');
+  const ctx = canvas.getContext('2d');
+  const box = canvas.parentElement;
+  canvas.width = box.offsetWidth;
+  canvas.height = box.offsetHeight;
+
+  ctx.fillStyle = "#f3b7c7";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.globalCompositeOperation = 'destination-out';
+
+  let scratching = false;
+
+  function scratch(x, y) {
+    ctx.beginPath();
+    ctx.arc(x, y, 32, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function pos(e) {
+    const r = canvas.getBoundingClientRect();
+    return {
+      x: (e.touches ? e.touches[0].clientX : e.clientX) - r.left,
+      y: (e.touches ? e.touches[0].clientY : e.clientY) - r.top
+    };
+  }
+
+  canvas.addEventListener('touchstart', e => {
+    scratching = true;
+    const p = pos(e);
+    scratch(p.x, p.y);
+  });
+  canvas.addEventListener('touchmove', e => {
+    if (scratching) {
+      const p = pos(e);
+      scratch(p.x, p.y);
+    }
+  });
+  canvas.addEventListener('touchend', () => scratching = false);
+}
+
+const grid = document.getElementById('moments');
+MOMENTS.forEach(text => {
+  const d = document.createElement('div');
+  d.className = 'moment';
+  d.textContent = 'Tap ☕️';
+  d.onclick = () => {
+    d.classList.add('revealed');
+    d.textContent = text;
+  };
+  grid.appendChild(d);
+});
+</script>
+
+</body>
+</html>
