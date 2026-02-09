@@ -168,22 +168,21 @@
     You’re the future I keep choosing.<br>
     2ajilan 🤍
   </p>
-  <button class="btn" onclick="go('main')">Open this slowly ☕️</button>
+  <button class="btn" onclick="go('main')">Open this slowly 🫖</button>
 </div>
 
 <!-- MAIN -->
 <div class="screen" id="main">
 
   <div class="glass">
-    <h2 style="text-align:center; margin-bottom:14px;">Scratch this 🤍</h2>
+    <h2 style="text-align:center; margin-bottom:14px;">I Love You 🤍</h2>
     <div class="scratch-wrap">
       <canvas id="scratch"></canvas>
       <div class="scratch-text">
         My Dottie,<br><br>
         I don’t love you quietly.<br>
         I love you with intention, obsession, and certainty.<br>
-        Every plan in my head somehow includes you — 2ajilan.<br><br>
-        ewa yaaaalah ☕️
+        Every plan in my head somehow includes you 2ajilan.<br><br>
       </div>
     </div>
   </div>
@@ -201,23 +200,22 @@
 
 <!-- FINAL -->
 <div class="screen final" id="end">
-  <h1>See you soon,<br>My Dottie 🤍</h1>
+  <h1>See you soon,<br>My Dottie 🫖</h1>
   <p>
     This isn’t longing.<br>
-    This is anticipation.<br>
-    2ajilan.
+    This is anticipation l 2ajilan inchaallah.<br>
   </p>
 </div>
 
 <script>
 /* CARDS — PASSIONATE, PLAYFUL, NOT ABSTRACT */
 const MOMENTS = [
-  "I’m deeply, irrationally into you — and I don’t want it any other way.",
-  "You make the future feel exciting instead of scary.",
+  "I’m deeply, irrationally into you b gae ljawari7 w l ach3ar diali and I don’t want it any other way.",
+  "You make the future feel exciting w I never stop planning and executing to make you have the best life with me 2ajilan nchaellah.",
   "I feel safe with you in ways I didn’t know I needed.",
-  "I admire you more than I say — and I think about you more than I should.",
-  "I’m choosing you on purpose. Every version of tomorrow. 2ajilan.",
-  "You’re mine, I’m yours — ewa yaaaalah ☕️"
+  "I admire you more than I say, I think about you more than I think of anything else and more than you imagine.",
+  "I’m choosing you and I will keep choosing you in every version of tomorrow.",
+  "ewa yaaaalah 🥱 You’re mine and I’m yours"
 ];
 
 function go(id) {
@@ -271,7 +269,7 @@ const grid = document.getElementById('moments');
 MOMENTS.forEach(text => {
   const d = document.createElement('div');
   d.className = 'moment';
-  d.textContent = 'Tap ☕️';
+  d.textContent = 'Tap 🫖';
   d.onclick = () => {
     d.classList.add('revealed');
     d.textContent = text;
